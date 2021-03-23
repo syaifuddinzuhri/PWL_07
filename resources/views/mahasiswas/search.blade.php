@@ -5,31 +5,15 @@
             <div class="pull-left mt-2">
                 <h2>JURUSAN TEKNOLOGI INFORMASI-POLITEKNIK NEGERI MALANG</h2>
             </div>
-            <div class="float-right my-2">
-                <a class="btn btn-success" href="{{ route('mahasiswas.create') }}"> Input Mahasiswa</a>
-            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-lg-6">
-            <form action="{{ route('mahasiswa.search') }}" method="GET">
-                <div class="row">
-                    <div class="col-lg-8">
-                        <input type="text" name="keywords" class="form-control" id="keywords" aria-describedby="keywords"
-                            placeholder="Masukkan nama mahasiswa">
-                    </div>
-                    <div class="col-lg-4 pl-0">
-                        <button type="submit" class="btn btn-primary">Cari</button>
-                    </div>
-                </div>
-            </form>
+
+    <div class="row my-3">
+        <div class="col">
+            <a href="{{ route('mahasiswas.index') }}" class="btn btn-secondary">Kembali</a>
         </div>
     </div>
-    @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
-        </div>
-    @endif
+
     <table class="table table-bordered">
         <tr>
             <th>Nim</th>

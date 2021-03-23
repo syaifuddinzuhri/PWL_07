@@ -113,4 +113,10 @@ class MahasiswaController extends Controller
         Mahasiswa::find($nim)->delete();
         return redirect()->route('mahasiswas.index')->with('success', 'Mahasiswa Berhasil Dihapus');
     }
+
+    public function search(Request $request)
+    {
+        $mahasiswas = Mahasiswa::where('nama', 'like', "%" . $request->keywords . "%")->paginate(5);
+        return view('mahasiswas.search', compact('mahasiswas'));
+    }
 }
