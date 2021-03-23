@@ -71,9 +71,11 @@ class MahasiswaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($nim)
     {
-        //
+        //menampilkan detail data dengan menemukan berdasarkan Nim Mahasiswa untuk diedit
+        $Mahasiswa = Mahasiswa::find($nim);
+        return view('mahasiswas.edit', compact('Mahasiswa'));
     }
 
     /**
