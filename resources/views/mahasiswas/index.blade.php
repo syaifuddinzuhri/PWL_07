@@ -43,4 +43,10 @@
             </tr>
         @endforeach
     </table>
+
+    <div class="row">
+        <div class="col-12 text-center">
+            {{ $mahasiswas->links() }}
+        </div>
+    </div>
 @endsection

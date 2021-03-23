@@ -61,7 +61,7 @@ class MahasiswaSeeder extends Seeder
                 'no_handphone' => '085888321123',
             ],
             [
-                'nim' => '1941720234',
+                'nim' => '1941720134',
                 'nama' => 'Rifkie Nurdian',
                 'email' => 'rifkie@gmail.com',
                 'tanggal_lahir' => '2000-05-23',
