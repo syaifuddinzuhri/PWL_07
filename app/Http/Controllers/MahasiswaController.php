@@ -85,9 +85,20 @@ class MahasiswaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $nim)
     {
-        //
+        //melakukan validasi data
+        $request->validate([
+            'nim' => 'required',
+            'nama' => 'required',
+            'kelas' => 'required',
+            'jurusan' => 'required',
+            'no_handphone' => 'required',
+        ]);
+        //fungsi eloquent untuk mengupdate data inputan kita
+        Mahasiswa::find($nim)->update($request->all());
+        //jika data berhasil diupdate, akan kembali ke halaman utama
+        return redirect()->route('mahasiswas.index')->with('success', 'Mahasiswa Berhasil Diupdate');
     }
 
     /**
@@ -96,8 +107,10 @@ class MahasiswaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($nim)
     {
-        //
+        //fungsi eloquent untuk menghapus data
+        Mahasiswa::find($nim)->delete();
+        return redirect()->route('mahasiswas.index')->with('success', 'Mahasiswa Berhasil Dihapus');
     }
 }
