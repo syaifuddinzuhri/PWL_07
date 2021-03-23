@@ -37,7 +37,7 @@ class MahasiswaSeeder extends Seeder
                 'no_handphone' => '082654123434',
             ],
             [
-                'nim' => '20417230126',
+                'nim' => '2041723126',
                 'nama' => 'Farel Putra Hidayat',
                 'kelas' => 'TI-2D',
                 'jurusan' => 'Teknik Informatika',
