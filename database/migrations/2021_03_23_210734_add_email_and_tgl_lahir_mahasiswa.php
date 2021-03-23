@@ -13,7 +13,10 @@ class AddEmailAndTglLahirMahasiswa extends Migration
      */
     public function up()
     {
-        //
+        Schema::table('mahasiswa', function (Blueprint $table) {
+            $table->string('email', 100)->nullable()->after('nama');
+            $table->date('tanggal_lahir')->nullable()->after('email');
+        });
     }
 
     /**
@@ -23,6 +26,9 @@ class AddEmailAndTglLahirMahasiswa extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('mahasiswa', function (Blueprint $table) {
+            $table->dropColumn('email');
+            $table->dropColumn('tanggal_lahir');
+        });
     }
 }
