@@ -27,7 +27,7 @@ class MahasiswaController extends Controller
      */
     public function create()
     {
-        //
+        return view('mahasiswas.create');
     }
 
     /**
@@ -38,7 +38,18 @@ class MahasiswaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //melakukan validasi data
+        $request->validate([
+            'nim' => 'required',
+            'nama' => 'required',
+            'kelas' => 'required',
+            'jurusan' => 'required',
+            'no_handphone' => 'required',
+        ]);
+        //fungsi eloquent untuk menambah data
+        Mahasiswa::create($request->all());
+        //jika data berhasil ditambahkan, akan kembali ke halaman utama
+        return redirect()->route('mahasiswas.index')->with('success', 'Mahasiswa Berhasil Ditambahkan');
     }
 
     /**
