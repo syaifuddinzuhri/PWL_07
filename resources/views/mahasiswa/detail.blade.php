@@ -1,4 +1,4 @@
-@extends('mahasiswas.layout')
+@extends('mahasiswa.layout')
 @section('content')
     <div class="container mt-5">
         <div class="row justify-content-center align-items-center">
@@ -16,7 +16,7 @@
                     </ul>
                 </div>
                 <a class="btn btn-success mt-
-                  3" href="{{ route('mahasiswas.index') }}">Kembali</a>
+                          3" href="{{ route('mahasiswa.index') }}">Kembali</a>
             </div>
         </div>
     </div>

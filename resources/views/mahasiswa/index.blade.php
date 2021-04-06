@@ -1,4 +1,4 @@
-@extends('mahasiswas.layout')
+@extends('mahasiswa.layout')
 @section('content')
     <div class="row">
         <div class="col-lg-12 margin-tb">
@@ -6,7 +6,7 @@
                 <h2>JURUSAN TEKNOLOGI INFORMASI-POLITEKNIK NEGERI MALANG</h2>
             </div>
             <div class="float-right my-2">
-                <a class="btn btn-success" href="{{ route('mahasiswas.create') }}"> Input Mahasiswa</a>
+                <a class="btn btn-success" href="{{ route('mahasiswa.create') }}"> Input Mahasiswa</a>
             </div>
         </div>
     </div>
@@ -47,12 +47,13 @@
                 <td>{{ $mahasiswa->jurusan }}</td>
                 <td>{{ $mahasiswa->no_handphone }}</td>
                 <td>
-                    <form action="{{ route('mahasiswas.destroy', $mahasiswa->nim) }}" method="POST">
-                        <a class="btn btn-info" href="{{ route('mahasiswas.show', $mahasiswa->nim) }}">Show</a>
-                        <a class="btn btn-primary" href="{{ route('mahasiswas.edit', $mahasiswa->nim) }}">Edit</a>
+                    <form action="{{ route('mahasiswa.destroy', $mahasiswa->nim) }}" method="POST">
+                        <a class="btn btn-info" href="{{ route('mahasiswa.show', $mahasiswa->nim) }}">Show</a>
+                        <a class="btn btn-primary" href="{{ route('mahasiswa.edit', $mahasiswa->nim) }}">Edit</a>
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger">Delete</button>
+                        <a class="btn btn-warning" href="{{ route('mahasiswa.nilai', $mahasiswa->nim) }}">Nilai</a>
                     </form>
                 </td>
             </tr>
