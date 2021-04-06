@@ -86,7 +86,7 @@ class MahasiswaController extends Controller
     public function edit($nim)
     {
         //menampilkan detail data dengan menemukan berdasarkan Nim Mahasiswa untuk diedit
-        $Mahasiswa = Mahasiswa::find($nim);
+        $Mahasiswa = Mahasiswa::with('kelas')->find($nim);
         $kelas = Kelas::all();
         return view('mahasiswas.edit', compact('Mahasiswa', 'kelas'));
     }
