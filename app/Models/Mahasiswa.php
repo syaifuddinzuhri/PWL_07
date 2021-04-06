@@ -26,4 +26,14 @@ class Mahasiswa extends Model
         'jurusan',
         'no_handphone',
     ];
+
+    /**
+     * Get the user that owns the Mahasiswa
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function kelas()
+    {
+        return $this->belongsTo(Kelas::class);
+    }
 }
