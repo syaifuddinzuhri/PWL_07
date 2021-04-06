@@ -38,10 +38,6 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="kelas">Kelas</label>
-                            <input type="kelas" name="kelas" class="form-control" id="kelas" aria-describedby="kelas">
-                        </div>
-                        <div class="form-group">
                             <label for="jurusan">Jurusan</label>
                             <input type="jurusan" name="jurusan" class="form-control" id="jurusan"
                                 aria-describedby="jurusan">
