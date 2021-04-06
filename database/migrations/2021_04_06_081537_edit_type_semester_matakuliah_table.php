@@ -13,7 +13,9 @@ class EditTypeSemesterMatakuliahTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::table('matakuliah', function (Blueprint $table) {
+            $table->integer('semester')->change();
+        });
     }
 
     /**
@@ -23,6 +25,8 @@ class EditTypeSemesterMatakuliahTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('matakuliah', function (Blueprint $table) {
+            $table->string('semester', 25)->change();
+        });
     }
 }
