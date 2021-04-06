@@ -4,12 +4,16 @@
         <div class="col-12">
             <div class="row">
                 <div class="col-lg-10">
-                    <form action="{{ route('mahasiswa.search') }}" method="GET" class="form-inline">
-                        <div class="form-group mr-4">
-                            <input type="text" name="keywords" class="form-control" id="keywords"
-                                aria-describedby="keywords" placeholder="Masukkan nama mahasiswa">
+                    <form action="{{ route('mahasiswa.search') }}" method="GET">
+                        <div class="col-lg-6">
+                            <div class="input-group">
+                                <input type="text" name="keywords" class="form-control" id="keywords"
+                                    aria-describedby="keywords" placeholder="Masukkan nama mahasiswa">
+                                <span class="input-group-btn ml-3">
+                                    <button class="btn btn-outline-primary" type="submit">Cari</button>
+                                </span>
+                            </div>
                         </div>
-                        <button type="submit" class="btn btn-outline-primary">Cari</button>
                     </form>
                 </div>
                 <div class="col-lg-2 ml-auto">
