@@ -39,6 +39,12 @@ class MataKuliahSeeder extends Seeder
                 'jam' => 6,
                 'semester' => 4
             ],
+            [
+                'nama_matkul' => 'Proyek 1',
+                'sks' => 3,
+                'jam' => 6,
+                'semester' => 4
+            ],
         ];
 
         DB::table('matakuliah')->insert($matkul);
