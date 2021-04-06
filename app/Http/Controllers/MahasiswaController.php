@@ -117,6 +117,7 @@ class MahasiswaController extends Controller
     public function search(Request $request)
     {
         $mahasiswas = Mahasiswa::where('nama', 'like', "%" . $request->keywords . "%")->paginate(5);
+        $mahasiswas->appends(['keywords' => $request->keywords]);
         return view('mahasiswas.search', compact('mahasiswas'));
     }
 }
