@@ -48,8 +48,18 @@ class MahasiswaController extends Controller
             'jurusan' => 'required',
             'no_handphone' => 'required',
         ]);
-        //fungsi eloquent untuk menambah data
-        Mahasiswa::create($request->all());
+        //fungsi eloquent untuk mengambil data kelas dari relation
+        $kelas = Kelas::find($request->get('kelas'));
+
+        //fungsi eloquent untuk menyimpan data mahasiswa
+        $mahasiswa = new Mahasiswa();
+        $mahasiswa->nim = $request->get('nim');
+        $mahasiswa->nama = $request->get('nama');
+        $mahasiswa->jurusan = $request->get('jurusan');
+        $mahasiswa->no_handphone = $request->get('no_handphone');
+        $mahasiswa->kelas()->associate($kelas); // FUngsi eloquent untuk menyimpan belongTo
+        $mahasiswa->save();
+
         //jika data berhasil ditambahkan, akan kembali ke halaman utama
         return redirect()->route('mahasiswas.index')->with('success', 'Mahasiswa Berhasil Ditambahkan');
     }
