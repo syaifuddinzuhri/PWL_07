@@ -18,6 +18,7 @@ Route::get('/', function () {
   return view('welcome');
 });
 
-Route::get('mahasiswas/search', [MahasiswaController::class, 'search'])->name('mahasiswa.search');
+Route::get('mahasiswa/nilai/{nim}', [MahasiswaController::class, 'nilai'])->name('mahasiswa.nilai');
+Route::get('mahasiswa/search', [MahasiswaController::class, 'search'])->name('mahasiswa.search');
 
-Route::resource('mahasiswas', MahasiswaController::class);
+Route::resource('mahasiswa', MahasiswaController::class);
