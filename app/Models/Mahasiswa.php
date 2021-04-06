@@ -22,7 +22,7 @@ class Mahasiswa extends Model
         'nama',
         'email',
         'tanggal_lahir',
-        'kelas',
+        'kelas_id',
         'jurusan',
         'no_handphone',
     ];
