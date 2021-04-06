@@ -18,7 +18,7 @@ class MahasiswaController extends Controller
         //fungsi eloquent menampilkan data menggunakan pagination
         // $mahasiswas = Mahasiswa::all(); // Mengambil semua isi tabel
         $mahasiswas = Mahasiswa::with('kelas')->orderBy('nim', 'desc')->paginate(5);
-        return view('mahasiswas.index', compact('mahasiswas'))->with('i', (request()->input('page', 1) - 1) * 5);
+        return view('mahasiswa.index', compact('mahasiswas'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -29,7 +29,7 @@ class MahasiswaController extends Controller
     public function create()
     {
         $kelas = Kelas::all();
-        return view('mahasiswas.create', compact('kelas'));
+        return view('mahasiswa.create', compact('kelas'));
     }
 
     /**
@@ -61,7 +61,7 @@ class MahasiswaController extends Controller
         $mahasiswa->save();
 
         //jika data berhasil ditambahkan, akan kembali ke halaman utama
-        return redirect()->route('mahasiswas.index')->with('success', 'Mahasiswa Berhasil Ditambahkan');
+        return redirect()->route('mahasiswa.index')->with('success', 'Mahasiswa Berhasil Ditambahkan');
     }
 
     /**
@@ -74,7 +74,7 @@ class MahasiswaController extends Controller
     {
         //menampilkan detail data dengan menemukan/berdasarkan Nim Mahasiswa
         $Mahasiswa = Mahasiswa::with('kelas')->find($nim);
-        return view('mahasiswas.detail', compact('Mahasiswa'));
+        return view('mahasiswa.detail', compact('Mahasiswa'));
     }
 
     /**
@@ -88,7 +88,7 @@ class MahasiswaController extends Controller
         //menampilkan detail data dengan menemukan berdasarkan Nim Mahasiswa untuk diedit
         $Mahasiswa = Mahasiswa::with('kelas')->find($nim);
         $kelas = Kelas::all();
-        return view('mahasiswas.edit', compact('Mahasiswa', 'kelas'));
+        return view('mahasiswa.edit', compact('Mahasiswa', 'kelas'));
     }
 
     /**
@@ -120,7 +120,7 @@ class MahasiswaController extends Controller
         $mahasiswa->kelas()->associate($kelas); // FUngsi eloquent untuk menyimpan belongTo
         $mahasiswa->save();
         //jika data berhasil diupdate, akan kembali ke halaman utama
-        return redirect()->route('mahasiswas.index')->with('success', 'Mahasiswa Berhasil Diupdate');
+        return redirect()->route('mahasiswa.index')->with('success', 'Mahasiswa Berhasil Diupdate');
     }
 
     /**
@@ -131,15 +131,26 @@ class MahasiswaController extends Controller
      */
     public function destroy($nim)
     {
+        $mahasiswa = Mahasiswa::find($nim);
+
+        //fungsi eloquent untuk menghapus data pada relasi mahasiswa_matakuliah
+        $mahasiswa->matakuliah()->detach();
         //fungsi eloquent untuk menghapus data
-        Mahasiswa::find($nim)->delete();
-        return redirect()->route('mahasiswas.index')->with('success', 'Mahasiswa Berhasil Dihapus');
+        $mahasiswa->delete();
+        return redirect()->route('mahasiswa.index')->with('success', 'Mahasiswa Berhasil Dihapus');
     }
 
     public function search(Request $request)
     {
         $mahasiswas = Mahasiswa::where('nama', 'like', "%" . $request->keywords . "%")->paginate(5);
         $mahasiswas->appends(['keywords' => $request->keywords]);
-        return view('mahasiswas.search', compact('mahasiswas'));
+        return view('mahasiswa.search', compact('mahasiswas'));
+    }
+
+    public function nilai($nim)
+    {
+        //menampilkan detail data nilai mahasiswa dengan menemukan/berdasarkan Nim Mahasiswa
+        $mahasiswa = Mahasiswa::with('kelas', 'matakuliah')->find($nim);
+        return view('mahasiswa.nilai', compact('mahasiswa'));
     }
 }
