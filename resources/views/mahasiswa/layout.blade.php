@@ -17,6 +17,13 @@
 
 <body>
     <div class="container">
+        <div class="row mt-5">
+            <div class="col-lg-12 text-center">
+                <h2>JURUSAN TEKNOLOGI INFORMASI-POLITEKNIK NEGERI MALANG</h2>
+                <hr>
+            </div>
+        </div>
+
         @yield('content')
     </div>
 </body>
